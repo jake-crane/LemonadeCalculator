@@ -7,14 +7,8 @@ sugarRatioInput.onkeyup = update;
 waterRatioInput.onkeyup = update;
 cupsOfLemonJuiceInput.onkeyup = update;
 
-var resultElement = document.getElementById("result");
-
-function getOutputString(lemonRatio, sugarRatio, waterRatio, cupsOfLemonJuice) {
-	return "For "
-	+ cupsOfLemonJuice + " cups of lemon juice, you should use "
-	+ cupsOfSugar(cupsOfLemonJuice, lemonRatio, sugarRatio) + " cups of sugar and "
-	+ cupsOfWater(cupsOfLemonJuice, lemonRatio, waterRatio) + " cups of water.";
-}
+var sugarResultElement = document.getElementById("sugarResult");
+var waterResultElement = document.getElementById("waterResult");
 
 function update() {
 	var lemonRatio = parseFloat(lemonRatioInput.value);
@@ -28,7 +22,8 @@ function update() {
 	} else if (!lemonRatio || !sugarRatio || !waterRatio || !cupsOfLemonJuice) {
 		resultElement.innerHTML = "Invalid input";
 	} else {
-		resultElement.innerHTML = getOutputString(lemonRatio, sugarRatio, waterRatio, cupsOfLemonJuice);
+		sugarResultElement.innerHTML = parseFloat(cupsOfSugar(cupsOfLemonJuice, lemonRatio, sugarRatio)).toFixed(1);
+		waterResultElement.innerHTML = parseFloat(cupsOfWater(cupsOfLemonJuice, lemonRatio, waterRatio)).toFixed(1);
 	}
 }
 
