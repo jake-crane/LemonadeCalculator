@@ -10,7 +10,9 @@ cupsOfLemonJuiceInput.onkeyup = update;
 var sugarResultElement = document.getElementById("sugarResult");
 var waterResultElement = document.getElementById("waterResult");
 
-function update() {
+function update(e) {
+	if (e.which === 13)
+		$(this).blur();
 	var lemonRatio = parseFloat(lemonRatioInput.value);
 	var sugarRatio = parseFloat(sugarRatioInput.value);
 	var waterRatio = parseFloat(waterRatioInput.value);
